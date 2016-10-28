@@ -7,8 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <a href="/projects" class="navbar-brand">Home</a>
 
-<%= yield %>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="">Profile</a>
+          </li>
+          <li>
+            <form action="/logout" method="post">
+            	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            	<input type="hidden" name="_method" value="delete">
+            	<button type="submit" class="navbar-btn btn">Logout</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <%= yield %>
+
+  </div>
+
+
 
 </body>
 </html>

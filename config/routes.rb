@@ -1,36 +1,35 @@
 Rails.application.routes.draw do
+
+  # SESSION ROUTES
   root 'sessions#index'
-
-  post '/artist' => 'sessions#register'
-
   get '/enter' => 'sessions#users'
-
+  post '/artist' => 'sessions#register'
   post '/login' => 'sessions#login'
+  get '/' => 'sessions#logout'
 
-  get '/projects' => 'projects#home'
-
-  post '/create' => 'projects#create'
-
-  get '/artist/:id' => 'artists#show'
-
-  get '/generation' => 'projects#new'
-
+  # ARTIST ROUTES
   get 'profile/:id' => 'artists#profile'
-
+  get '/artist/:id' => 'artists#show'
   get '/edit/:id' => 'artists#update'
-
   patch '/myprofile/:id' => 'artists#save'
 
+  # PROJECT ROUTES
+  get '/projects' => 'projects#home'
+  get '/generation' => 'projects#new'
   get '/project/:id' => 'projects#show'
+  post '/create' => 'projects#create'
 
+  # COMMENT ROUTES
   post '/comments' => 'comments#create'
-
   post '/collaborate' => 'comments#collaborate'
 
+<<<<<<< HEAD
   post '/addpic' => 'pictures#create'
 
  
 
+=======
+>>>>>>> origin/frontend
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
