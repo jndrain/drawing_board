@@ -1,2 +1,13 @@
+<a href="/artist/<%= session[:artist_id] %>">Home</a>
+<a href="/projects">Available Projects</a>
+<a href="/">Logout</a>
 <h1><%= @artist.uname %></h1>
 <h3><%= @artist.bio %></h3>
+<%= image_tag @artist.image.url %>
+<h2>Add to your portfolio:</h2>
+<form action="/addpic" method="post" enctype= "multipart/form-data">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<p>Title<input type="text" name="title"></p>
+	<input type="file" id="image" name="image" />
+	<input type="submit" value="Add">
+</form>

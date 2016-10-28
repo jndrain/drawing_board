@@ -1,5 +1,6 @@
-<a href="/projects">Home</a>
-<a href="/draw">Logout</a>
+<a href="/artist/<%= session[:artist_id] %>">Home</a>
+<a href="/projects">Available Projects</a>
+<a href="/">Logout</a>
 <h2><%= @project.name %></h2>
 <%= image_tag @project.avatar.url %>
 <br>

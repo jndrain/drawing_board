@@ -1,3 +1,6 @@
+<a href="/artist/<%= session[:artist_id] %>">Home</a>
+<a href="/projects">Available Projects</a>
+<a href="/">Logout</a>
 Edit Your Profile:
 <form action="/myprofile/<%= @artist.id %>" method="post" enctype= "multipart/form-data">
 	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">

@@ -1,3 +1,7 @@
+<a href="/artist/<%= session[:artist_id] %>">Home</a>
+<a href="/profile/<%= session[:artist_id] %>">My Profile</a>
+<a href="/projects">Available Projects</a>
+<a href="/">Logout</a>
 <h1><%=@artist.uname%></h1>
 <h1><%=@artist.city%>, <%=@artist.state%></h1>
 <%= image_tag @artist.avatar.url %>
@@ -45,14 +49,13 @@
 		<tr>
 			<td><a href="/project/<%= o.id %>"><%= o.name %></a></td>
 			<td><%= o.description %></td>
-			<td><a href="/artist/<%= o.artist.id %>"><%= o.artist.fname %> <%= o.artist.lname %></a></td>
+			<td><a href="/profile/<%= o.artist.id %>"><%= o.artist.fname %> <%= o.artist.lname %></a></td>
 			<td><%= o.media %></td>
 		<% end %>
 		</tr>
 </table>
 <a href="/generation">Create a Project</a>
 <a href="/edit/<%= @artist.id %>">Edit Your Profile</a>
-<a href="/">Logout</a>
 
 
 

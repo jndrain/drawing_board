@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   post '/collaborate' => 'comments#collaborate'
 
+  post '/addpic' => 'pictures#create'
+
  
 
   # The priority is based upon order of creation: first created -> highest priority.

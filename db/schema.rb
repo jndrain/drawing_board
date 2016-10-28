@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027232557) do
+ActiveRecord::Schema.define(version: 20161028180731) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "fname"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 20161027232557) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "collabs", force: :cascade do |t|
@@ -50,6 +54,28 @@ ActiveRecord::Schema.define(version: 20161027232557) do
 
   add_index "comments", ["artist_id"], name: "index_comments_on_artist_id"
   add_index "comments", ["project_id"], name: "index_comments_on_project_id"
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "artist_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "pictures", ["artist_id"], name: "index_pictures_on_artist_id"
+
+  create_table "portfolio_pics", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "portfolio_pics", ["artist_id"], name: "index_portfolio_pics_on_artist_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
