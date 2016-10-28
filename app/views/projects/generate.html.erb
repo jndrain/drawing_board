@@ -1,0 +1,11 @@
+<h1>Create a Project</h1>
+<form action="/create" method="post" enctype= "multipart/form-data">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<p> What is the title of your project? <input type="text" name="name"></p>
+	<p> What forms of media are you using? <input type="text" name="media"></p>
+	<p>Describe your project: <textarea name="description"></textarea></p>
+	<p>Choose a photo that represents your project! 
+	<input type="file" id="avatar" name="avatar" />
+	<br>
+	<input type="submit" value="Submit">
+</form>

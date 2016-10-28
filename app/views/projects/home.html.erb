@@ -1,0 +1,22 @@
+<a href="/projects">Home</a>
+<a href="/draw">Logout</a>
+<h1>Get Involved in a Project:</h1>
+<br>
+<table>
+	<thead>
+		<tr>
+			<th>Project Name</th>
+			<th>Description</th>
+			<th>Originating Artist</th>
+			<th>Media</th>
+		</tr>
+	</thead>
+		<% @projects.each do |c| %>
+		<tr>
+			<td><a href="/project/<%= c.id %>"><%= c.name %></a></td>
+			<td><%= c.description %></td>
+			<td><a href="/profile/<%= c.artist.id %>"><%= c.artist.fname %> <%= c.artist.lname %></a></td>
+			<td><%= c.media %></td>
+		</tr>
+		<% end %>
+</table>

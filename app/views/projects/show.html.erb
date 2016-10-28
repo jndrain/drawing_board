@@ -1,0 +1,47 @@
+<a href="/projects">Home</a>
+<a href="/draw">Logout</a>
+<h2><%= @project.name %></h2>
+<%= image_tag @project.avatar.url %>
+<br>
+<h3>Originating Artist:</h3>
+<a href="/profile/<%= @project.artist.id %>"><%= @project.artist.uname %></a>
+<h3>Collaborators:</h3>
+<% @collab.each do |c| %>
+	<p><a href="/profile/<%= c.artist.id %>"><%= c.artist.uname %></a></p>
+<% end %>
+<br>
+<h3>Media Used:</h3>
+<p><%= @project.media %></p>
+<br>
+<h3>Description:</h3>
+<p><%= @project.description %></p>
+<br>
+
+<div class="discussion">
+	<h3>Drawing Board</h3>
+	<% @comments.each do |comment| %>
+		<p><%=comment.artist.uname%> says: <%=comment.content%></p>
+	<% end %>
+	<form action="/comments" method="post">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<input type="hidden" value="<%=@project.id%>" name="project_id">
+		<textarea name="comment" cols="60" rows="7"></textarea>
+		<br>
+		<input type="submit" value="What are your thoughts?">
+	</form>
+</div>
+
+
+	<div class="collaborate">
+	<form action="/collaborate" method="post">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<input type="hidden" value="<%=@project.id%>" name="project_id">
+		<input type="submit" value="Collaborate">
+	</form>
+	</div>
+
+
+
+
+
+
