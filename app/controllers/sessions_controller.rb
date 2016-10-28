@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
       session[:artist_id] = @artist.id
       redirect_to "/artist/#{@artist.id}"
     else
-    	flash[:errors] = "Invalid"
-      redirect_to "/enter"
+    	flash[:errors] = @artist.errors.full_messages
+      redirect_to "/"
     end
   end
   def users

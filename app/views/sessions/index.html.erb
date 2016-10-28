@@ -1,18 +1,56 @@
 <h1>Welcome to the Drawing Board!</h1>
-<h3>Register Here:</h3>
-<form action="/artist" method="post" enctype= "multipart/form-data">
-	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	<p>First Name:<input type="text" name="fname"></p>
-	<p>Last Name:<input type="text" name="lname"></p>
-	<p>Username:<input type="text" name="uname"></p>
-	<p>City:<input type="text" name="city"></p>
-	<p>State:<input type="text" name="state"></p>
-	<p>Email:<input type="text" name="email"></p>
-	<p>Password:<input type="text" name="password"></p>
-	<p>Password confirmation:<input type-="text" name="password_confirmation"></p>
-	<p>Tell us about yourself:<textarea name="bio"></textarea></p>
-	<input type="file" id="avatar" name="avatar" />
-	<input type="submit" value="Register">
-</form>
+<div class="col-md-4 col-offset-2">
+	<h3>Register Here:</h3>
+	<% if flash[:errors] %>
+		<div class="danger">
+			<% flash[:errors].each do |error| %>
+			<p><%= error %></p>
+		</div>
+		<% end %>
+	<% end %>
+	<form action="/artist" method="post" enctype= "multipart/form-data">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<div class="form-group">
+			First Name
+			<input type="text" name="fname" class="form-control">
+		</div>
+		<div class="form-group">
+			Last Name
+			<input type="text" name="lname" class="form-control">
+		</div>
+		<div class="form-group">
+			Username
+			<input type="text" name="uname" class="form-control">
+		</div>
+		<div class="form-group">
+			City
+			<input type="text" name="city" class="form-control">
+			State
+			<input type="text" name="state" class="form-control">
+		</div>
+		<div class="form-group">
+			Email
+			<input type="text" name="email" class="form-control">
+		</div>
+		<div class="form-group">
+			Password
+			<input type="password" name="password" class="form-control">
+			Confirmation
+			<input type="password" name="password_confirmation" class="form-control">
+		</div>
+		<div class="form-group">
 
-<a href="/enter">Already a member?</a>
+		</div>
+		<div class="form-group">
+			<p>Tell us about yourself</p>
+			<textarea name="bio" class="form-control"></textarea>
+			<input type="file" id="avatar" name="avatar"/>
+			<p class="help-block">Upload your avatar image here.</p>
+		</div>
+		<div class="form-group">
+
+		</div>
+		<input type="submit" value="Register" class="form-control">
+		<a href="/enter">Already a member?</a>
+	</form>
+</div>
