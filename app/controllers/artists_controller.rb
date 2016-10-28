@@ -8,6 +8,7 @@ class ArtistsController < ApplicationController
 	end
 	def profile
 		@artist = Artist.where(id: params[:id]).first
+		@pictures = Picture.where(artist_id: session[:artist_id])
 	end
 	def update
 		@artist = Artist.where(id: params[:id]).first

@@ -3,7 +3,10 @@
 <a href="/">Logout</a>
 <h1><%= @artist.uname %></h1>
 <h3><%= @artist.bio %></h3>
-<%= image_tag @artist.image.url %>
+<% @pictures.each do |p| %>
+	<%= image_tag p.image.url %>
+	<p><%= p.title %></p>
+<% end %>
 <h2>Add to your portfolio:</h2>
 <form action="/addpic" method="post" enctype= "multipart/form-data">
 	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
