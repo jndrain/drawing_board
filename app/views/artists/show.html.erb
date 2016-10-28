@@ -14,9 +14,9 @@
 	</thead>
 		<% @collab.each do |c| %>
 			<tr>
-				<td><a href="/project/<%= c.id %>"><%= c.project.name %></a></td>
+				<td><a href="/project/<%= c.project.id %>"><%= c.project.name %></a></td>
 				<td><%= c.project.description %></td>
-				<td><a href="/artist/<%= c.project.artist.id %>"><%= c.project.artist.fname %> <%= c.project.artist.lname %></a></td>
+				<td><a href="/profile/<%= c.project.artist.id %>"><%= c.project.artist.fname %> <%= c.project.artist.lname %></a></td>
 				<td><%= c.project.media %></td>
 			</tr>
 		<% end %>
@@ -24,7 +24,7 @@
 			<tr>
 				<td><a href="/project/<%= u.id %>"><%= u.name %></a></td>
 				<td><%= u.description %></td>
-				<td><a href="/artist/<%= u.artist.id %>"><%= u.artist.fname %> <%= u.artist.lname %></a></td>
+				<td><a href="/profile/<%= u.artist.id %>"><%= u.artist.fname %> <%= u.artist.lname %></a></td>
 				<td><%= u.media %></td>
 
 		<% end %>

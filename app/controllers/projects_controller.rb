@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
 		@artist = Artist.where(id: session[:artist_id]).first
 		@project = Project.where(id: params[:id]).first
 		@collab = Collab.where(project_id: @project)
-		@comments = Comment.where(project_id: @project.id)
+		@comments = Comment.where(project_id: @project)
 		render "show"
 	end
 	def create
