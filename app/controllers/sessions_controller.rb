@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     def index
+      # reset_session
     render "index"
   end
   def register
@@ -21,7 +22,7 @@ class SessionsController < ApplicationController
       session[:artist_id] = @artist.id
       redirect_to "/artist/#{@artist.id}"
     else
-    	flash[:errors] = "Invalid"
+    	flash[:errors] = ["Cannot find user password combination"]
       	redirect_to "/enter"
     end
   end

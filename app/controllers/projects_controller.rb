@@ -25,5 +25,5 @@ class ProjectsController < ApplicationController
 	def user_params
     params.permit(:avatar, :session[:artist_id], :name, :description, :media)
   end
-	
+
 end

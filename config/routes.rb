@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/enter' => 'sessions#users'
   post '/artist' => 'sessions#register'
   post '/login' => 'sessions#login'
+  delete '/logout' => 'sessions#logout'
 
   # ARTIST ROUTES
   get 'profile/:id' => 'artists#profile'
@@ -21,21 +22,6 @@ Rails.application.routes.draw do
   # COMMENT ROUTES
   post '/comments' => 'comments#create'
   post '/collaborate' => 'comments#collaborate'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
