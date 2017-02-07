@@ -1,6 +1,12 @@
-<a href="/artist/<%= session[:artist_id] %>">Home</a>
-<a href="/projects">Available Projects</a>
-<a href="/">Logout</a>
+<div class="row">
+	<div id="sidebar" class="col-xs-8">
+		<a href="/artist/<%= session[:artist_id] %>">Home</a>
+		<a href="/profile/<%= session[:artist_id] %>">My Profile</a>
+		<a href="/generation">Create a Project</a>
+		<a href="/edit/<%= @artist.id %>">Edit Your Profile</a>
+		<a href="/">Logout</a>
+	</div>
+</div>
 <h2><%= @project.name %></h2>
 <%= image_tag @project.avatar.url %>
 <br>
@@ -10,6 +16,13 @@
 <% @collab.each do |c| %>
 	<p><a href="/profile/<%= c.artist.id %>"><%= c.artist.uname %></a></p>
 <% end %>
+<div class="collaborate">
+	<form action="/collaborate" method="post">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<input type="hidden" value="<%=@project.id%>" name="project_id">
+		<input type="submit" value="Join Project">
+	</form>
+	</div>
 <br>
 <h3>Media Used:</h3>
 <p><%= @project.media %></p>
@@ -33,13 +46,7 @@
 </div>
 
 
-	<div class="collaborate">
-	<form action="/collaborate" method="post">
-		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-		<input type="hidden" value="<%=@project.id%>" name="project_id">
-		<input type="submit" value="Collaborate">
-	</form>
-	</div>
+	
 
 
 

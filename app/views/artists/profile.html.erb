@@ -1,16 +1,18 @@
-<a href="/artist/<%= session[:artist_id] %>">Home</a>
-<a href="/projects">Available Projects</a>
-<a href="/">Logout</a>
-<h1><%= @artist.uname %></h1>
-<h3><%= @artist.bio %></h3>
-<% @pictures.each do |p| %>
-	<%= image_tag p.image.url %>
-	<p><%= p.title %></p>
-<% end %>
-<h2>Add to your portfolio:</h2>
-<form action="/addpic" method="post" enctype= "multipart/form-data">
-	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	<p>Title<input type="text" name="title"></p>
-	<input type="file" id="image" name="image" />
-	<input type="submit" value="Add">
-</form>
+<div class="row">
+	<div id="sidebar" class="col-xs-8">
+		<a class="btn btn-default btn-sm" href="/artist/<%= session[:artist_id] %>">Home</a>
+		<a class="btn btn-default btn-sm" href="/generation">Create a Project</a>
+		<a class="btn btn-default btn-sm" href="/edit/<%= session[:artist_id] %>">Edit Your Profile</a>
+		<a class="btn btn-default btn-sm" href="/">Logout</a>
+	</div>
+</div>
+<div id="main-content" class="col-xs-9">
+	<h1><%= @artist.uname %></h1>
+	<h3><%= @artist.bio %></h3>
+	<% @pictures.each do |p| %>
+		<%= image_tag p.image.url %>
+		<p><%= p.title %></p>
+	<% end %>
+	<h4>Contact Me</h4>
+	<h5><%= @artist.email %></h5>
+</div>

@@ -1,10 +1,18 @@
+<div class="row">
+	<div id="sidebar" class="col-xs-8">
+		<a class="btn btn-default btn-sm" href="/artist/<%= session[:artist_id] %>">Home</a>
+		<a class="btn btn-default btn-sm" href="/profile/<%= session[:artist_id] %>">My Profile</a>
+		<a class="btn btn-default btn-sm" href="/edit/<%= session[:artist_id] %>">Edit Your Profile</a>
+		<a class="btn btn-default btn-sm" href="/">Logout</a>
+	</div>
+</div>
 <h1>Create a Project</h1>
 <form action="/create" method="post" enctype= "multipart/form-data">
 	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 	<p> What is the title of your project? <input type="text" name="name"></p>
 	<p> What forms of media are you using? <input type="text" name="media"></p>
 	<p>Describe your project: <textarea name="description"></textarea></p>
-	<p>Choose a photo that represents your project! 
+	<p>Which photo represents your project?</p> 
 	<input type="file" id="avatar" name="avatar" />
 	<br>
 	<input type="submit" value="Submit">

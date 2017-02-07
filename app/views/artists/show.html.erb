@@ -1,62 +1,65 @@
-<a href="/artist/<%= session[:artist_id] %>">Home</a>
-<a href="/profile/<%= session[:artist_id] %>">My Profile</a>
-<a href="/projects">Available Projects</a>
-<a href="/">Logout</a>
-<h1><%=@artist.uname%></h1>
-<h1><%=@artist.city%>, <%=@artist.state%></h1>
-<%= image_tag @artist.avatar.url %>
-
-<h3>Current Projects</h3>
-<table>
-	<thead>
-		<tr>
-			<th>Project Name</th>
-			<th>Description</th>
-			<th>Originating Artist</th>
-			<th>Media</th>
-		</tr>
-	</thead>
-		<% @collab.each do |c| %>
+<div class="row">
+	<div id="sidebar" class="col-xs-8">
+		<a class="btn btn-default btn-sm" href="/artist/<%= session[:artist_id] %>">Home</a>
+		<a class="btn btn-default btn-sm" href="/profile/<%= session[:artist_id] %>">My Profile</a>
+		<a class="btn btn-default btn-sm" href="/generation">Create a Project</a>
+		<a class="btn btn-default btn-sm" href="/edit/<%= @artist.id %>">Edit Your Profile</a>
+		<a class="btn btn-default btn-sm" href="/">Logout</a>
+	</div>
+</div>
+<div id="main-content" class="col-xs-9">
+	<h1><%=@artist.uname%></h1>
+	<h1><%=@artist.city%>, <%=@artist.state%></h1>
+	<%= image_tag @artist.avatar.url %>
+	<h3>Current Projects</h3>
+	<table class="table">
+		<thead>
 			<tr>
-				<td><a href="/project/<%= c.project.id %>"><%= c.project.name %></a></td>
-				<td><%= c.project.description %></td>
-				<td><a href="/profile/<%= c.project.artist.id %>"><%= c.project.artist.fname %> <%= c.project.artist.lname %></a></td>
-				<td><%= c.project.media %></td>
+				<th>Project Name</th>
+				<th>Description</th>
+				<th>Originating Artist</th>
+				<th>Media</th>
 			</tr>
-		<% end %>
-		<% @current. each do |u| %>
+		</thead>
+			<% @collab.each do |c| %>
+				<tr>
+					<td><a href="/project/<%= c.project.id %>"><%= c.project.name %></a></td>
+					<td><%= c.project.description %></td>
+					<td><a href="/profile/<%= c.project.artist.id %>"><%= c.project.artist.fname %> <%= c.project.artist.lname %></a></td>
+					<td><%= c.project.media %></td>
+				</tr>
+			<% end %>
+			<% @current. each do |u| %>
+				<tr>
+					<td><a class="btn btn-default" href="/project/<%= u.id %>"><%= u.name %></a></td>
+					<td><%= u.description %></td>
+					<td><a class="btn btn-default" href="/profile/<%= u.artist.id %>"><%= u.artist.fname %> <%= u.artist.lname %></a></td>
+					<td><%= u.media %></td>
+
+			<% end %>
+	</table>
+	<br>
+	<br>
+	<h3>Projects in Your Area</h3>
+	<table class="table">
+		<thead>
 			<tr>
-				<td><a href="/project/<%= u.id %>"><%= u.name %></a></td>
-				<td><%= u.description %></td>
-				<td><a href="/profile/<%= u.artist.id %>"><%= u.artist.fname %> <%= u.artist.lname %></a></td>
-				<td><%= u.media %></td>
-
-		<% end %>
-</table>
-<br>
-<br>
-<h3>Projects in Your Area</h3>
-<table>
-	<thead>
-		<tr>
-			<th>Project Name</th>
-			<th>Description</th>
-			<th>Originating Artist</th>
-			<th>Media</th>
-		</tr>
-	</thead>
-		<% @others.each do |o| %>
-		<tr>
-			<td><a href="/project/<%= o.id %>"><%= o.name %></a></td>
-			<td><%= o.description %></td>
-			<td><a href="/profile/<%= o.artist.id %>"><%= o.artist.fname %> <%= o.artist.lname %></a></td>
-			<td><%= o.media %></td>
-		<% end %>
-		</tr>
-</table>
-<a href="/generation">Create a Project</a>
-<a href="/edit/<%= @artist.id %>">Edit Your Profile</a>
-
+				<th>Project Name</th>
+				<th>Description</th>
+				<th>Originating Artist</th>
+				<th>Media</th>
+			</tr>
+		</thead>
+			<% @others.each do |o| %>
+			<tr>
+				<td><a href="/project/<%= o.id %>"><%= o.name %></a></td>
+				<td><%= o.description %></td>
+				<td><a href="/profile/<%= o.artist.id %>"><%= o.artist.fname %> <%= o.artist.lname %></a></td>
+				<td><%= o.media %></td>
+			<% end %>
+			</tr>
+	</table>
+</div>
 
 
 

@@ -1,22 +1,64 @@
-<a href="/artist/<%= session[:artist_id] %>">Home</a>
-<a href="/projects">Available Projects</a>
-<a href="/">Logout</a>
-Edit Your Profile:
-<form action="/myprofile/<%= @artist.id %>" method="post" enctype= "multipart/form-data">
+<a class="btn btn-default btn-sm" href="/artist/<%= session[:artist_id] %>">Home</a>
+<a class="btn btn-default btn-sm" href="/profile/<%= session[:artist_id] %>">My Profile</a>
+<a class="btn btn-default btn-sm" href="/generation">Create a Project</a>
+<a class="btn btn-default btn-sm" href="/">Logout</a>
+<br><br>
+<h4>Edit your Profile:</h4><br>
+<form role="form" class="form-horizontal" action="/myprofile/<%= @artist.id %>" method="post" enctype= "multipart/form-data">
 	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 	<input name="_method" value="patch" type="hidden">
 	<input type='hidden' name='artist_id' value='<%= @artist.id %>'>
-	<p>Username:<input type="text" name="uname">
-	<p>First Name:<input type="text" name="fname"></p>
-	<p>Last Name:<input type="text" name="lname"></p>
-	<p>Email address:<input type="text" name="email"></p>
-	<p>Password:<input type="text" name="password"></p>
-	<p>Password confirmation:<input type="text" name="password_confirmation"></p>
-	<p>City:<input type="text" name="city"></p>
-	<p>State:<input type="text" name="state"></p>
-	<p>Bio:<input type="text" name="bio"></p>
+	<div class="form-group">
+		<label for="uname" class="col-sm-1 control-label">User Name</label>
+		<div class="col-sm-10">
+			<input type="text" name="uname">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="fname" class="col-sm-1 control-label">First Name</label>
+		<div class="col-sm-10">
+			<input type="text" name="fname">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="lname" class="col-sm-1 control-label">Last Name</label>
+		<div class="col-sm-10">
+			<input type="text" name="lname">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="email" class="col-sm-1 control-label">Email</label>
+		<div class="col-sm-10">
+			<input type="text" name="email">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="city" class="col-sm-1 control-label">City</label>
+		<div class="col-sm-10">
+			<input type="text" name="city">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="state" class="col-sm-1 control-label">State</label>
+		<div class="col-sm-10">
+			<input type="text" name="state">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="bio" class="col-sm-1 control-label">Bio</label>
+		<div class="col-sm-10">
+			<input type="text" name="bio">
+		</div>
+	</div>
 
-	<p>Upload a picture for your profile page:</p>
-	<input type="file" id="avatar" name="avatar" />
-	<input type="submit" value="Submit">
+		<p>Upload a picture for your profile page:</p>
+		<input type="file" id="avatar" name="avatar" />
+		<input type="submit" value="Submit">
 </form>
+<p>Add to your portfolio page:</p>
+	<form action="/addpic" method="post" enctype= "multipart/form-data">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<p>Title<input type="text" name="title"></p>
+		<input type="file" id="image" name="image" />
+		<input type="submit" value="Add">
+	</form>
